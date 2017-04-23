@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="dd9aec60-a0a5-4e03-8089-d41c1889982f" name="Default" comment="" />
+    <ignored path="rivertrotters.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="rivertrotters" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/Template/Games/week.ctp" />
+        <option value="$PROJECT_DIR$/webroot/css/sb-admin-2.css" />
+        <option value="$PROJECT_DIR$/../Alchemists-HTML-Package/HTML/basketball/index.html" />
+        <option value="$PROJECT_DIR$/src/Template/Games/index.ctp" />
+        <option value="$PROJECT_DIR$/config/app.php" />
+        <option value="$PROJECT_DIR$/src/Model/Entity/Team.php" />
+        <option value="$PROJECT_DIR$/src/Controller/GamesController.php" />
+        <option value="$PROJECT_DIR$/src/Template/Admin/Teams/index.ctp" />
+        <option value="$PROJECT_DIR$/src/Controller/Admin/TeamMenusController.php" />
+        <option value="$PROJECT_DIR$/src/Template/Teams/index.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Teams/roster.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Teams/gallery.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Teams/results.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Teams/schedule.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Teams/standing.ctp" />
+        <option value="$PROJECT_DIR$/src/Model/Entity/Player.php" />
+        <option value="$PROJECT_DIR$/src/Shell/ImportShell.php" />
+        <option value="$PROJECT_DIR$/src/Controller/Admin/AppController.php" />
+        <option value="$PROJECT_DIR$/config/routes.php" />
+        <option value="$PROJECT_DIR$/src/View/AppView.php" />
+        <option value="$PROJECT_DIR$/src/Controller/AppController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/Admin/TeamsController.php" />
+        <option value="$PROJECT_DIR$/src/Template/Layout/admin.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Admin/Players/edit.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Admin/Players/index.ctp" />
+        <option value="$PROJECT_DIR$/src/Model/Table/TeamsTable.php" />
+        <option value="$PROJECT_DIR$/src/Model/Table/PlayersTable.php" />
+        <option value="$PROJECT_DIR$/src/Controller/Admin/PlayersController.php" />
+        <option value="$PROJECT_DIR$/src/Template/Rivertrotters/index.ctp" />
+        <option value="$PROJECT_DIR$/src/Controller/TeamsController.php" />
+        <option value="$PROJECT_DIR$/src/Template/Layout/default.ctp" />
+        <option value="$PROJECT_DIR$/src/Controller/RivertrottersController.php" />
+        <option value="$PROJECT_DIR$/webroot/css/style.css" />
+        <option value="$PROJECT_DIR$/src/Template/Rivertrotters/results.ctp" />
+        <option value="$PROJECT_DIR$/src/Lib/Nbb/Nbb.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="24" />
+    <option name="width" value="1920" />
+    <option name="height" value="993" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="basketbalstats" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="basketbalstats" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="basketbalstats" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
+    <property name="nodejs_interpreter_path" value="/usr/bin/node" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Controller/Admin" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dd9aec60-a0a5-4e03-8089-d41c1889982f" name="Default" comment="" />
+      <created>1484037492272</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1484037492272</updated>
+      <workItem from="1484037494158" duration="524000" />
+      <workItem from="1484077468353" duration="6389000" />
+      <workItem from="1484160448718" duration="5049000" />
+      <workItem from="1484331509715" duration="1253000" />
+      <workItem from="1485518444291" duration="10476000" />
+      <workItem from="1485694179573" duration="5988000" />
+      <workItem from="1485708918794" duration="4081000" />
+      <workItem from="1485888574023" duration="6787000" />
+      <workItem from="1486317973981" duration="232000" />
+      <workItem from="1486408027037" duration="14000" />
+      <workItem from="1486409333587" duration="18844000" />
+      <workItem from="1486828688507" duration="1595000" />
+      <workItem from="1487414086264" duration="140000" />
+      <workItem from="1487422686899" duration="12000" />
+      <workItem from="1487791900741" duration="5482000" />
+      <workItem from="1488570123943" duration="143000" />
+      <workItem from="1492971908723" duration="628000" />
+      <workItem from="1492980169391" duration="56000" />
+    </task>
+    <task id="LOCAL-00001" summary="Add new week view in nba styl">
+      <created>1484083804338</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1484083804338</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add filter en score">
+      <created>1484085920809</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1484085920809</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add basis nbb lib">
+      <created>1484160998033</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1484160998033</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Select all home games for the home page">
+      <created>1484161938590</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1484161938590</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add update">
+      <created>1484331529758</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1484331529758</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Update stylling">
+      <created>1484331555484</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1484331555484</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Update default home page">
+      <created>1485524019977</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1485524019977</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Update new css files">
+      <created>1485524066585</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1485524066585</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Update routes ennew home page">
+      <created>1485524150378</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1485524150378</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Add teh widsgest">
+      <created>1485525781859</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1485525781859</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add admin controllers">
+      <created>1485695392160</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1485695392160</updated>
+    </task>
+    <task id="LOCAL-00012" summary="add admin lvl">
+      <created>1485695426112</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1485695426112</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add basic of team page">
+      <created>1485695445130</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1485695445130</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Add admin templates view">
+      <created>1485695470107</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1485695470107</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Add mdoels for player en teams">
+      <created>1485695500373</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1485695500373</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Add comments for NBB lib">
+      <created>1485696010026</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1485696010026</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Update the index page for teams">
+      <created>1485696041229</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1485696041229</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Update composser.lock">
+      <created>1485696093902</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1485696093902</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Update css">
+      <created>1485696122194</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1485696122194</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Update index form admin">
+      <created>1485697404842</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1485697404842</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Add import shell from nbb to DB">
+      <created>1485697463187</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1485697463187</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Add bake of menu">
+      <created>1486318122115</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1486318122115</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Update all view for teams">
+      <created>1486417123238</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1486417123238</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Update home page add dynamic menu">
+      <created>1486417159027</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1486417159027</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Update all controllers">
+      <created>1486417175534</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1486417175534</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Update the lib">
+      <created>1486417185629</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1486417185629</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Update staning with stats">
+      <created>1486420686596</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1486420686596</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Last update">
+      <created>1486588325267</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1486588325268</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Update routes">
+      <created>1486594744898</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1486594744898</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Add theam switcher">
+      <created>1486594767229</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1486594767229</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Add player import">
+      <created>1486594776232</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1486594776232</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Update menu add all of admin stuff">
+      <created>1486595613622</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1486595613622</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Add all css/js for admin">
+      <created>1486596344220</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1486596344220</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Add menu options">
+      <created>1487792465656</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1487792465656</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Add 1e version of results page">
+      <created>1487802903861</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1487802903861</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Update nbb lib">
+      <created>1488570178574</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1488570178575</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="67693000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="24" width="1920" height="993" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897604" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897604" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add admin lvl" />
+    <MESSAGE value="Add basic of team page" />
+    <MESSAGE value="Add admin templates view" />
+    <MESSAGE value="Add mdoels for player en teams" />
+    <MESSAGE value="Add comments for NBB lib" />
+    <MESSAGE value="Update the index page for teams" />
+    <MESSAGE value="Update composser.lock" />
+    <MESSAGE value="Update css" />
+    <MESSAGE value="Update index form admin" />
+    <MESSAGE value="Add import shell from nbb to DB" />
+    <MESSAGE value="Add bake of menu" />
+    <MESSAGE value="Update all view for teams" />
+    <MESSAGE value="Update home page add dynamic menu" />
+    <MESSAGE value="Update all controllers" />
+    <MESSAGE value="Update the lib" />
+    <MESSAGE value="Update staning with stats" />
+    <MESSAGE value="Last update" />
+    <MESSAGE value="Update routes" />
+    <MESSAGE value="Add theam switcher" />
+    <MESSAGE value="Add player import" />
+    <MESSAGE value="Update menu add all of admin stuff" />
+    <MESSAGE value="Add all css/js for admin" />
+    <MESSAGE value="Add menu options" />
+    <MESSAGE value="Add 1e version of results page" />
+    <MESSAGE value="Update nbb lib" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update nbb lib" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Model/Entity/Team.php" />
+    <entry file="file://$PROJECT_DIR$/../Alchemists-HTML-Package/HTML/basketball/team-overview.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10710">
+          <caret line="1343" column="61" selection-start-line="1343" selection-start-column="30" selection-end-line="1343" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/PagesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Teams/view.ctp" />
+    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Teams/index.ctp" />
+    <entry file="file://$PROJECT_DIR$/src/Controller/GamesController.php" />
+    <entry file="file://$PROJECT_DIR$/webroot/js/custom.js" />
+    <entry file="file://$PROJECT_DIR$/webroot/js/dropzone.js" />
+    <entry file="file://$PROJECT_DIR$/webroot/js/init.js" />
+    <entry file="file://$PROJECT_DIR$/webroot/js/jquery-validation.js" />
+    <entry file="file://$PROJECT_DIR$/webroot/css/components.css" />
+    <entry file="file://$PROJECT_DIR$/webroot/css/theme.css" />
+    <entry file="file://$PROJECT_DIR$/../Alchemists-HTML-Package/HTML/basketball/team-standings.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="548" column="0" selection-start-line="548" selection-start-column="0" selection-end-line="904" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/TeamMenusController.php" />
+    <entry file="file://$PROJECT_DIR$/src/Model/Table/TeamMenusTable.php" />
+    <entry file="file://$PROJECT_DIR$/../Alchemists-HTML-Package/HTML/basketball/team-schedule.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="580" column="0" selection-start-line="580" selection-start-column="0" selection-end-line="799" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Teams/roster.ctp" />
+    <entry file="file://$PROJECT_DIR$/src/Template/Teams/results.ctp" />
+    <entry file="file://$PROJECT_DIR$/src/Template/Teams/gallery.ctp" />
+    <entry file="file://$PROJECT_DIR$/src/Template/Teams/standing.ctp" />
+    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/AppController.php" />
+    <entry file="file://$PROJECT_DIR$/src/View/AppView.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Entity/Player.php" />
+    <entry file="file://$PROJECT_DIR$/config/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="753">
+          <caret line="80" column="7" selection-start-line="80" selection-start-column="7" selection-end-line="80" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Shell/ImportShell.php" />
+    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/TeamsController.php" />
+    <entry file="file://$PROJECT_DIR$/src/Template/Layout/admin.ctp" />
+    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Players/view.ctp" />
+    <entry file="file://$PROJECT_DIR$/src/Template/Admin/News/index.ctp" />
+    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/NewsController.php" />
+    <entry file="file://$PROJECT_DIR$/src/Template/Admin/News/add.ctp" />
+    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Players/edit.ctp" />
+    <entry file="file://$PROJECT_DIR$/src/Model/Table/TeamsTable.php" />
+    <entry file="file://$PROJECT_DIR$/src/Model/Table/PlayersTable.php" />
+    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Players/index.ctp" />
+    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/PlayersController.php" />
+    <entry file="file://$PROJECT_DIR$/src/Controller/AppController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="807">
+          <caret line="78" column="9" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Teams/index.ctp" />
+    <entry file="file://$PROJECT_DIR$/src/Template/Rivertrotters/index.ctp" />
+    <entry file="file://$PROJECT_DIR$/src/Template/Rivertrotters/teams.ctp" />
+    <entry file="file://$PROJECT_DIR$/src/Controller/TeamsController.php" />
+    <entry file="file://$PROJECT_DIR$/src/Template/Layout/default.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="142" column="80" selection-start-line="142" selection-start-column="80" selection-end-line="142" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Rivertrotters/games.ctp" />
+    <entry file="file://$PROJECT_DIR$/src/Template/Rivertrotters/tasks.ctp" />
+    <entry file="file://$PROJECT_DIR$/../Alchemists-HTML-Package/HTML/basketball/blog-4.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="546" column="0" selection-start-line="546" selection-start-column="0" selection-end-line="1066" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Teams/schedule.ctp" />
+    <entry file="file://$PROJECT_DIR$/webroot/css/style.css" />
+    <entry file="file://$PROJECT_DIR$/src/Lib/Nbb/Nbb.php" />
+    <entry file="file://$PROJECT_DIR$/src/Controller/RivertrottersController.php" />
+    <entry file="file://$PROJECT_DIR$/src/Template/Rivertrotters/results.ctp" />
+    <entry file="file://$PROJECT_DIR$/../Alchemists-HTML-Package/HTML/basketball/index-2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="1532" column="11" selection-start-line="1532" selection-start-column="11" selection-end-line="1691" selection-end-column="0" />
+          <folding>
+            <element signature="n#aside#3;n#div#1;n#div#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
