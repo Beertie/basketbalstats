@@ -39,13 +39,13 @@ class Application extends BaseApplication
         $middleware
             // Catch any exceptions in the lower layers,
             // and make an error page/response
-            ->add(ErrorHandlerMiddleware::class)
+            ->add(new ErrorHandlerMiddleware(Configure::read('Error.exceptionRenderer')))
 
             // Handle plugin/theme assets like CakePHP normally does.
-            ->add(AssetMiddleware::class)
+            ->add(new AssetMiddleware())
 
             // Apply routing
-            ->add(RoutingMiddleware::class);
+            ->add(new RoutingMiddleware());
 
         return $middleware;
     }
