@@ -13,6 +13,7 @@ class Nbb{
     //Set global api url
     public $url = "http://db.basketball.nl/db/json/wedstrijd.pl";
 
+
     /**
      * Nbb constructor.
      *

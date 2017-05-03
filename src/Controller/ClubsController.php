@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Lib\Nbb\Clubs;
 
 /**
  * Clubs Controller
@@ -12,6 +13,14 @@ class ClubsController extends AppController
 {
 
     public function index(){
+
+        $clubs = new Clubs();
+
+        $allClubs = $clubs->getAllClubs();
+
+        debug($allClubs);
+
+        exit;
 
     }
 
