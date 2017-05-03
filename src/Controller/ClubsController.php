@@ -10,4 +10,9 @@ use App\Controller\AppController;
  */
 class ClubsController extends AppController
 {
+
+    public function index(){
+
+    }
+
 }
