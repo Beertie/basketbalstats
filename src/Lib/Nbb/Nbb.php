@@ -9,6 +9,76 @@ class Nbb{
     //Club id fo use for one club
     public $club_id;
 
+    /**
+     * org_id : alleen de clubs van deze organisatie tonen (bijv. org_id=3 voor rayon oost)
+     * date   : alleen clubs ophalen die bijgewerkt zijn na deze datum. datum moet in formaat yyyy-mm-dd HH:MM:SS zijn
+     *
+     * @var string
+     */
+    public $club_api_url = "http://db.basketball.nl/db/json/club.pl";
+
+    /**
+     * cmp_ID   : verplicht, dit is het ID van de competitie waarvan je de stand wilt ophalen
+     * seizoen  : gegevens van ander seizoen dan het huidige ophalen, in formaat jaar-jaar, bijv. 2010-2012
+     * szn_Naam : als alternatief om seizoen door te geven
+     * datum    : stand per andere datum dan vandaag ophalen, datum in formaat yyyy-mm-dd , bijv. 2012-03-21
+     *
+     * @var string
+     */
+    public $stand_api_url = "http://db.basketball.nl/db/json/stand.pl";
+
+    /**
+     *  cmp_ID    : id van de competitie
+     * clb_ID    : id van de club
+     * loc_ID    : id van de locatie (sporthal)
+     * date      : alleen wedstrijden ophalen die bijgewerkt zijn na deze datum.
+     * datum moet in formaat yyyy-mm-dd HH:MM:SS zijn
+     * seizoen   : gegevens van ander seizoen dan het huidige ophalen, in formaat jaar-jaar, bijv. 2010-2012
+     * szn_Naam  : als alternatief om seizoen door te geven
+     * plg_ID    : alleen de wedstrijden van dit ene team ophalen
+     * wed_ID    : alleen de gegevens van deze ene wedstrijd ophalen
+     *
+     * @var string
+     */
+    public $games_api_url = "http://db.basketball.nl/db/json/wedstrijd.pl";
+
+    /**
+     * org_id : alleen de sporthallen van deze organisatie tonen (bijv. org_id=3 voor rayon oost)
+     * date   : alleen sporthallen ophalen die bijgewerkt zijn na deze datum datum moet in formaat yyyy-mm-dd HH:MM:SS zijn
+     *
+     * @var string
+     */
+    public $location_api_url = "http://db.basketball.nl/db/json/locatie.pl";
+
+    /**
+     * org_ID      : alleen de competities van deze organisatie tonen (bijv. org_id=3 voor rayon oost)
+     * date        : alleen competities ophalen die bijgewerkt zijn na deze datum.
+     * datum moet in formaat yyyy-mm-dd HH:MM:SS zijn
+     * seizoen     : gegevens van ander seizoen dan het huidige ophalen, in formaat jaar-jaar, bijv. 2010-2012
+     * clb_ID      : alleen competities tonen waar deze club in speelt
+     * clb_ISSnum  : met ISS nummer van de club de lijst filteren tot competities waar deze club in speelt
+     *
+     * @var string
+     */
+    public $competition_api_url = "http://db.basketball.nl/db/json/competities.pl";
+
+    /**
+     * clb_ID   : verplicht, dit is het ID van de club waar je de teams van wilt ophalen
+     * date     : alleen teams ophalen die bijgewerkt zijn na deze datum.
+     * datum moet in formaat yyyy-mm-dd HH:MM:SS zijn
+     * seizoen  : gegevens van ander seizoen dan het huidige ophalen, in formaat jaar-jaar, bijv. 2010-2012
+     *
+     * @var string
+     */
+    public $team_api_url = "http://db.basketball.nl/db/json/team.pl";
+
+    /**
+     * wed_ID  : verplicht, dit is het ID van de wedstrijd, zoals je in het schema / uitslagen overzicht kunt vinden
+     *
+     * @var string
+     */
+    public $stats_api_url = "http://db.basketball.nl/db/json/stats.pl";
+
     //TODO remove option of url
     //Set global api url
     public $url = "http://db.basketball.nl/db/json/wedstrijd.pl";
