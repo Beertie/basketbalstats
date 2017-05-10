@@ -50,6 +50,7 @@ class AppController extends Controller
         $this->loadModel('TeamMenus');
         $this->loadModel('Years');
 
+        //TODO to test
         $menu = $this->TeamMenus->find('all')->contain(['Teams']);
 
         $history = $this->Years->find('all')->contain(['HistoryTeams']);

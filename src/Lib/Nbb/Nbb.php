@@ -7,6 +7,7 @@ use Cake\Cache\Cache;
 class Nbb{
 
     //Club id fo use for one club
+    //TODO Need to set to global var en set at int of lib
     public $club_id;
 
     /**
