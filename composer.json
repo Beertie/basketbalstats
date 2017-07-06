@@ -11,7 +11,9 @@
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "*",
         "friendsofcake/bootstrap-ui": "^0.5.2",
-        "ghunti/highcharts-php": "^3.0"
+        "ghunti/highcharts-php": "^3.0",
+        "peppeocchi/php-cron-scheduler": "^2.0",
+        "mtdowling/cron-expression": "^1.2"
     },
     "require-dev": {
         "psy/psysh": "@stable",

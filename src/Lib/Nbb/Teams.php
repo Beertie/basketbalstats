@@ -9,7 +9,11 @@
 namespace App\Lib\Nbb;
 
 
-class Teams
+class Teams extends Nbb
 {
 
+    public function getListOfTeams()
+    {
+        return json_decode(file_get_contents($this->getTeamApiUrl()));
+    }
 }

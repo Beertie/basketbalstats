@@ -2,6 +2,7 @@
 namespace App\Shell;
 
 use App\Lib\Nbb\Nbb;
+use Cake\Cache\Cache;
 use Cake\Console\Shell;
 
 /**
@@ -50,5 +51,19 @@ class TestShell extends Shell
 
         $game = $nbb->getGameOfTheWeek();
 
+    }
+
+    public function cache(){
+        $id = 1;
+
+
+        if (($data = Cache::read('/test/test_'.$id)) === false) {
+
+           $data = ['test', 'test'];
+
+            Cache::write('/test/test_'.$id, $data);
+        }
+
+        return $data;
     }
 }

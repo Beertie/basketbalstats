@@ -43,6 +43,8 @@ class PlayersTable extends Table
         $this->belongsToMany('Teams', [
             'through' => 'TeamsHasPlayers'
         ]);
+
+
     }
 
     /**

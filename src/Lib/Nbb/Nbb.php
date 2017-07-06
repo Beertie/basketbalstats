@@ -4,11 +4,12 @@ namespace App\Lib\Nbb;
 
 use Cake\Cache\Cache;
 
-class Nbb{
+class Nbb
+{
 
     //Club id fo use for one club
     //TODO Need to set to global var en set at int of lib
-    public $club_id;
+    public $club_id = 81;
 
     /**
      * org_id : alleen de clubs van deze organisatie tonen (bijv. org_id=3 voor rayon oost)
@@ -45,7 +46,8 @@ class Nbb{
 
     /**
      * org_id : alleen de sporthallen van deze organisatie tonen (bijv. org_id=3 voor rayon oost)
-     * date   : alleen sporthallen ophalen die bijgewerkt zijn na deze datum datum moet in formaat yyyy-mm-dd HH:MM:SS zijn
+     * date   : alleen sporthallen ophalen die bijgewerkt zijn na deze datum datum moet in formaat yyyy-mm-dd HH:MM:SS
+     * zijn
      *
      * @var string
      */
@@ -99,6 +101,25 @@ class Nbb{
         $this->club_id = $club_id;
     }
 
+
+    public function getTeamApiUrl()
+    {
+        return $this->team_api_url . "?clb_ID=" . $this->club_id;
+    }
+
+    public function getClubApiUrl()
+    {
+        return $this->club_api_url;
+    }
+
+
+
+
+
+
+    //TODO reset
+
+
     /**
      * Get all games of one seseon of teh select club sort bij date
      *
@@ -109,7 +130,8 @@ class Nbb{
      *
      * @return mixed|string
      */
-    public function getAllGames(){
+    public function getAllGames()
+    {
 
         $games = file_get_contents($this->url);
         $games = json_decode($games);
@@ -125,29 +147,31 @@ class Nbb{
      *
      * @param bool $home_game_only
      * @param null $week_number
+     *
      * @return array
      */
-    public function getThisWeek($home_game_only = false, $week_number = null){
+    public function getThisWeek($home_game_only = false, $week_number = null)
+    {
 
-       //Get all games json
+        //Get all games json
         $games = $this->getAllGames();
 
         //If no week number set get current number
-        if($week_number == null ){
+        if ($week_number == null) {
             $week_number = $this->getWeekNumber();
         }
 
         //Get dates of the weeekend for the week number
-        $date = $this->getStartAndEndDate(($week_number -1), 2017);
+        $date = $this->getStartAndEndDate(($week_number - 1), 2017);
 
         //Define week array
         $week = [];
 
         //For al games of the json file
-        foreach ($games->wedstrijden as $game){
+        foreach ($games->wedstrijden as $game) {
 
             //If no date for game skip it
-            if($game->datum == null){
+            if ($game->datum == null) {
                 continue;
             }
 
@@ -155,10 +179,10 @@ class Nbb{
             $unix_time = strtotime($game->datum);
 
             //Check is time is the range
-            if($unix_time > strtotime($date[0]) AND $unix_time < strtotime($date[1])){
+            if ($unix_time > strtotime($date[0]) AND $unix_time < strtotime($date[1])) {
 
                 //If only want home games skip all others
-                if($home_game_only AND $game->thuis_club_id != $this->club_id){
+                if ($home_game_only AND $game->thuis_club_id != $this->club_id) {
                     continue;
                 }
                 $week[] = $game;
@@ -170,6 +194,7 @@ class Nbb{
 
     }
 
+
     /**
      * Get game for competitons
      *
@@ -178,23 +203,27 @@ class Nbb{
      * Add sortoptions for date
      *
      * @param $comp_id
+     *
      * @return mixed|string
      */
-    public function getCompetition($comp_id){
+    public function getCompetition($comp_id)
+    {
 
         $comp = file_get_contents("http://db.basketball.nl/db/json/wedstrijd.pl?cmp_ID=$comp_id");
         $comp = json_decode($comp);
+
         return $comp;
 
     }
 
 
-    public function getScore($comp_id, $year = false){
+    public function getScore($comp_id, $year = false)
+    {
 
         $url = "http://db.basketball.nl/db/json/stand.pl?cmp_ID=$comp_id";
 
-        if($year != false){
-            $url .= "&&seizoen=".$year."-".($year + 1);
+        if ($year != false) {
+            $url .= "&&seizoen=" . $year . "-" . ($year + 1);
         }
 
         $comp = file_get_contents($url);
@@ -203,19 +232,21 @@ class Nbb{
         return $comp;
     }
 
-
-    public function getNameComp($comp_id){
+    public function getNameComp($comp_id)
+    {
         //TODO remove or cache hard
 
-        $url = "http://db.basketball.nl/db/json/stand.pl?cmp_ID=".$comp_id;
+        $url = "http://db.basketball.nl/db/json/stand.pl?cmp_ID=" . $comp_id;
         $comp = json_decode(file_get_contents($url));
+
         return $comp->naam;
     }
 
-    public function getFullTeamNameByComp($comp_id){
+    public function getFullTeamNameByComp($comp_id)
+    {
 
 
-        if (($teams = Cache::read('teams_'.$comp_id)) === false) {
+        if (($teams = Cache::read('teams_' . $comp_id)) === false) {
 
             $url = "http://db.basketball.nl/db/json/stand.pl?cmp_ID=" . $comp_id;
 
@@ -227,31 +258,32 @@ class Nbb{
             foreach ($comp->stand as $team) {
                 $teams[$team->ID] = str_replace("(VR)", '', $team->team);
             }
-            Cache::write('teams_'.$comp_id, $teams);
+            Cache::write('teams_' . $comp_id, $teams);
         }
 
         return $teams;
     }
 
-    public function getResultByClub(){
+    public function getResultByClub()
+    {
 
-        $url = "http://db.basketball.nl/db/json/wedstrijd.pl?clb_ID=".$this->club_id;
+        $url = "http://db.basketball.nl/db/json/wedstrijd.pl?clb_ID=" . $this->club_id;
         $results = json_decode(file_get_contents($url));
 
         //debug($results);exit;
 
         $games = [];
-        foreach ($results->wedstrijden as $game){
-            if($game->score_thuis != 0 AND $game->score_uit != 0){
+        foreach ($results->wedstrijden as $game) {
+            if ($game->score_thuis != 0 AND $game->score_uit != 0) {
 
                 $winner_home = 'winner';
                 $winner_away = 'loser';
-                if($game->score_thuis < $game->score_uit){
+                if ($game->score_thuis < $game->score_uit) {
                     $winner_home = 'loser';
                     $winner_away = 'winner';
                 }
 
-                if($game->score_thuis == $game->score_uit){
+                if ($game->score_thuis == $game->score_uit) {
                     $winner_home = 'winner';
                     $winner_away = 'winner';
                 }
@@ -262,12 +294,12 @@ class Nbb{
 
 
                 $games[] = [
-                    "home_team" => $game->thuis_ploeg ,
+                    "home_team" => $game->thuis_ploeg,
                     "home_score" => $game->score_thuis,
                     "home_team_id" => $game->thuis_ploeg_id,
                     "home_team_name" => wordwrap($teams_name[$game->thuis_ploeg_id], 8, "<br />", false),
                     "home_club_id" => $game->thuis_club_id,
-                    "away_team" => $game->uit_ploeg ,
+                    "away_team" => $game->uit_ploeg,
                     "away_score" => $game->score_uit,
                     "away_team_id" => $game->uit_ploeg_id,
                     "away_team_name" => wordwrap($teams_name[$game->uit_ploeg_id], 8, "<br />", false),
@@ -278,7 +310,7 @@ class Nbb{
                     "home_winner" => $winner_home,
                     "away_winner" => $winner_away,
                     "comp_name" => $teams_name['comp_name'],
-                    ];
+                ];
             }
         }
 
@@ -288,7 +320,8 @@ class Nbb{
         return $games;
     }
 
-    public function getResultsByTeam($team_id){
+    public function getResultsByTeam($team_id)
+    {
         //plg_ID
         ////http://db.basketball.nl/db/wedstrijd/uitslag.pl?&szn_Naam=2016-2017&cmp_ID=1045&plg_ID=767&org_ID=2&LVactie=Wedstrijdgegevens+tonen&Sorteer=wed_Datum
         $url = "http://db.basketball.nl/db/json/wedstrijd.pl?plg_ID=$team_id";
@@ -302,16 +335,15 @@ class Nbb{
 
     }
 
-    public function getStats($comp_id, $year = false){
+    public function getStats($comp_id, $year = false)
+    {
 
         $url = "http://db.basketball.nl/db/json/wedstrijd.pl?cmp_ID=$comp_id";
 
-        if($year != false){
-            $url .= "&&seizoen=".$year."-".($year + 1);
+        if ($year != false) {
+            $url .= "&&seizoen=" . $year . "-" . ($year + 1);
         }
         //debug($url);
-
-
 
 
         $score = file_get_contents($url);
@@ -321,16 +353,15 @@ class Nbb{
         $ignore_team_ids = $this->getNotActiveTeams($comp_id);
 
         $stats = [];
-        foreach ($score->wedstrijden as $game){
-            if(in_array($game->thuis_ploeg_id, $ignore_team_ids) OR in_array($game->uit_ploeg_id, $ignore_team_ids)){
+        foreach ($score->wedstrijden as $game) {
+            if (in_array($game->thuis_ploeg_id, $ignore_team_ids) OR in_array($game->uit_ploeg_id, $ignore_team_ids)) {
                 continue;
             }
 
             //If no score skip
-            if($game->score_thuis == 0 AND $game->score_uit == 0){
+            if ($game->score_thuis == 0 AND $game->score_uit == 0) {
                 continue;
             }
-
 
 
             $stats[$game->thuis_ploeg_id]['name'] = $game->thuis_ploeg;
@@ -338,37 +369,37 @@ class Nbb{
 
 
             //Set defauls
-            if(!isset($stats[$game->thuis_ploeg_id]['home']['win'])){
+            if (!isset($stats[$game->thuis_ploeg_id]['home']['win'])) {
                 $stats[$game->thuis_ploeg_id]['home']['win'] = 0;
             }
 
-            if(!isset($stats[$game->thuis_ploeg_id]['home']['lose'])){
+            if (!isset($stats[$game->thuis_ploeg_id]['home']['lose'])) {
                 $stats[$game->thuis_ploeg_id]['home']['lose'] = 0;
             }
 
-            if(!isset($stats[$game->uit_ploeg_id]['away']['win'])){
+            if (!isset($stats[$game->uit_ploeg_id]['away']['win'])) {
                 $stats[$game->uit_ploeg_id]['away']['win'] = 0;
             }
 
-            if(!isset($stats[$game->uit_ploeg_id]['away']['lose'])){
+            if (!isset($stats[$game->uit_ploeg_id]['away']['lose'])) {
                 $stats[$game->uit_ploeg_id]['away']['lose'] = 0;
             }
 
-            if(!isset($stats[$game->thuis_ploeg_id]['streak'])){
+            if (!isset($stats[$game->thuis_ploeg_id]['streak'])) {
                 $stats[$game->thuis_ploeg_id]['streak'] = 0;
             }
 
-            if(!isset($stats[$game->uit_ploeg_id]['streak'])){
+            if (!isset($stats[$game->uit_ploeg_id]['streak'])) {
                 $stats[$game->uit_ploeg_id]['streak'] = 0;
             }
 
             $home_win = true;
-            if($game->score_thuis < $game->score_uit){
+            if ($game->score_thuis < $game->score_uit) {
                 $home_win = false;
             }
 
 
-            if($home_win){
+            if ($home_win) {
 
                 //Count the wins and lose
                 $stats[$game->thuis_ploeg_id]['home']['win'] = $stats[$game->thuis_ploeg_id]['home']['win'] + 1;
@@ -382,29 +413,29 @@ class Nbb{
                 //Winning team
 
                 //IF home won and streak is negative or zero
-                if($stats[$game->thuis_ploeg_id]['streak'] <= 0){
+                if ($stats[$game->thuis_ploeg_id]['streak'] <= 0) {
 
                     //Reset en set to 1
                     $stats[$game->thuis_ploeg_id]['streak'] = 1;
-                }else{
+                } else {
 
                     //Else add 1
                     $stats[$game->thuis_ploeg_id]['streak'] = $stats[$game->thuis_ploeg_id]['streak'] + 1;
                 }
 
                 //Losing team
-                if($stats[$game->uit_ploeg_id]['streak'] > 0){
+                if ($stats[$game->uit_ploeg_id]['streak'] > 0) {
 
 
                     $stats[$game->uit_ploeg_id]['streak'] = -1;
-                }else{
+                } else {
 
 
                     $stats[$game->uit_ploeg_id]['streak'] = $stats[$game->uit_ploeg_id]['streak'] - 1;
                 }
 
 
-            }else{
+            } else {
 
                 //Count the wins and lose
                 $stats[$game->thuis_ploeg_id]['home']['lose'] = $stats[$game->thuis_ploeg_id]['home']['lose'] + 1;
@@ -415,42 +446,41 @@ class Nbb{
                 $stats[$game->uit_ploeg_id]["last"][] = "W";
 
 
-                if($stats[$game->uit_ploeg_id]['streak'] <= 0){
+                if ($stats[$game->uit_ploeg_id]['streak'] <= 0) {
                     $stats[$game->uit_ploeg_id]['streak'] = 1;
 
-                }else{
+                } else {
                     $stats[$game->uit_ploeg_id]['streak'] = $stats[$game->uit_ploeg_id]['streak'] + 1;
                 }
 
 
                 //Losing team
-                if($stats[$game->thuis_ploeg_id]['streak'] > 0){
+                if ($stats[$game->thuis_ploeg_id]['streak'] > 0) {
 
 
                     $stats[$game->thuis_ploeg_id]['streak'] = -1;
-                }else{
+                } else {
 
 
                     $stats[$game->thuis_ploeg_id]['streak'] = $stats[$game->thuis_ploeg_id]['streak'] - 1;
                 }
             }
 
-           /* $win= "Thuis wint";
-            if($home_win){
-                $win= "UItwint";
-            }
+            /* $win= "Thuis wint";
+             if($home_win){
+                 $win= "UItwint";
+             }
 
-            echo $win ."<br />";
-            echo "Thuis:".$game->thuis_ploeg_id ." " .$stats[$game->thuis_ploeg_id]['streak']."</br>";
-            echo "UIt:". $game->uit_ploeg_id ." " .$stats[$game->uit_ploeg_id]['streak']."</br>";
-            echo "<br />";*/
-
+             echo $win ."<br />";
+             echo "Thuis:".$game->thuis_ploeg_id ." " .$stats[$game->thuis_ploeg_id]['streak']."</br>";
+             echo "UIt:". $game->uit_ploeg_id ." " .$stats[$game->uit_ploeg_id]['streak']."</br>";
+             echo "<br />";*/
 
 
         }
 
 
-        foreach ($stats as $team_id => $st){
+        foreach ($stats as $team_id => $st) {
 
             $reversed = array_reverse($st['last']);
 
@@ -458,27 +488,27 @@ class Nbb{
             $w = 0;
             $l = 0;
 
-            for($i = 0; $i <= 4; $i++){
+            for ($i = 0; $i <= 4; $i++) {
                 //debug($reversed[$i]);
-                if($reversed[$i] == "W"){
+                if ($reversed[$i] == "W") {
                     $w = $w + 1;
-                }else{
-                    $l = $l +1;
+                } else {
+                    $l = $l + 1;
                 }
             }
 
-            $stats[$team_id]["home"] = $stats[$team_id]["home"]['win']."-".$stats[$team_id]["home"]['lose'];
-            $stats[$team_id]["away"] = $stats[$team_id]["away"]['win']."-".$stats[$team_id]["away"]['lose'];
+            $stats[$team_id]["home"] = $stats[$team_id]["home"]['win'] . "-" . $stats[$team_id]["home"]['lose'];
+            $stats[$team_id]["away"] = $stats[$team_id]["away"]['win'] . "-" . $stats[$team_id]["away"]['lose'];
 
-            if($stats[$team_id]['streak'] > 0){
-                $stats[$team_id]['streak'] = "W ".$stats[$team_id]['streak'];
+            if ($stats[$team_id]['streak'] > 0) {
+                $stats[$team_id]['streak'] = "W " . $stats[$team_id]['streak'];
             }
 
-            if($stats[$team_id]['streak'] < 0){
-                $stats[$team_id]['streak'] = "L ". abs($stats[$team_id]['streak']);
+            if ($stats[$team_id]['streak'] < 0) {
+                $stats[$team_id]['streak'] = "L " . abs($stats[$team_id]['streak']);
             }
 
-            $stats[$team_id]["L5"] = $w."-".$l;
+            $stats[$team_id]["L5"] = $w . "-" . $l;
 
         }
 
@@ -486,17 +516,18 @@ class Nbb{
 
     }
 
-    public function getSchedule($comp_id, $team_id){
+    public function getSchedule($comp_id, $team_id)
+    {
 
         $comp = file_get_contents("http://db.basketball.nl/db/json/wedstrijd.pl?cmp_ID=$comp_id");
         $comp = json_decode($comp);
 
         $schedule = [];
-        foreach ($comp->wedstrijden as $key => $game){
+        foreach ($comp->wedstrijden as $key => $game) {
 
-            if($game->thuis_ploeg_id == $team_id OR $game->uit_ploeg_id == $team_id){
+            if ($game->thuis_ploeg_id == $team_id OR $game->uit_ploeg_id == $team_id) {
 
-                if($game->score_thuis == 0 AND $game->score_uit == 0){
+                if ($game->score_thuis == 0 AND $game->score_uit == 0) {
                     $schedule[] = $game;
                 }
 
@@ -508,13 +539,14 @@ class Nbb{
 
     }
 
-    public function getStatsComp($comp_id){
+    public function getStatsComp($comp_id)
+    {
         $url = "http://db.basketball.nl/db/json/stand.pl?cmp_ID=$comp_id";
 
         $stats = file_get_contents($url);
         $stats = json_decode($stats);
 
-       return $stats;
+        return $stats;
 
 
     }
@@ -524,23 +556,27 @@ class Nbb{
 
         $time = strtotime("1 January $year", time());
         $day = date('w', $time);
-        $time += ((7*$week)+1-$day)*24*3600;
+        $time += ((7 * $week) + 1 - $day) * 24 * 3600;
         $return[0] = date('Y-n-j', $time);
-        $time += 6*24*3600;
+        $time += 6 * 24 * 3600;
         $return[1] = date('Y-n-j', $time);
+
         return $return;
     }
 
-    public function getWeekNumber(){
-        $time = date("Y-m-d",time());
+    public function getWeekNumber()
+    {
+        $time = date("Y-m-d", time());
         $date = new \DateTime($time);
         $week = $date->format("W");
+
         return $week;
     }
 
-    public function getGameOfTheWeek(){
+    public function getGameOfTheWeek()
+    {
 
-        $url = "http://db.basketball.nl/db/json/wedstrijd.pl?clb_ID=".$this->club_id;
+        $url = "http://db.basketball.nl/db/json/wedstrijd.pl?clb_ID=" . $this->club_id;
 
         $games = json_decode(file_get_contents($url));
 
@@ -548,16 +584,16 @@ class Nbb{
 
         $weekNo = date('W');
 
-        foreach ($games->wedstrijden as $game){
+        foreach ($games->wedstrijden as $game) {
 
-            if($game->score_thuis == 0 AND $game->score_uit == 0){
+            if ($game->score_thuis == 0 AND $game->score_uit == 0) {
 
-                if(date('W', strtotime($game->datum)) == $weekNo){
+                if (date('W', strtotime($game->datum)) == $weekNo) {
 
 
-                    if($game->thuis_club_id == $this->club_id){
+                    if ($game->thuis_club_id == $this->club_id) {
                         $return_games['thuis'][] = $game;
-                    }else{
+                    } else {
                         $return_games['uit'][] = $game;
                     }
                 }
@@ -567,13 +603,14 @@ class Nbb{
 
 
         //TODO select good game
-        if(!empty($return_games['thuis'])){
+        if (!empty($return_games['thuis'])) {
             $teams_name = $this->getFullTeamNameByComp($return_games['thuis'][0]->cmp_id);
 
             $team = [
-                "home_team" => $return_games['thuis'][0]->thuis_ploeg ,
-                "home_team_name" => wordwrap($teams_name[$return_games['thuis'][0]->thuis_ploeg_id], 8, "<br />", false),
-                "away_team" => $return_games['thuis'][0]->uit_ploeg ,
+                "home_team" => $return_games['thuis'][0]->thuis_ploeg,
+                "home_team_name" => wordwrap($teams_name[$return_games['thuis'][0]->thuis_ploeg_id], 8, "<br />",
+                    false),
+                "away_team" => $return_games['thuis'][0]->uit_ploeg,
                 "away_team_name" => wordwrap($teams_name[$return_games['thuis'][0]->uit_ploeg_id], 8, "<br />", false),
                 "location" => $return_games['thuis'][0]->loc_plaats,
                 "place" => $return_games['thuis'][0]->loc_naam,
@@ -585,15 +622,15 @@ class Nbb{
             return $team;
         }
 
-        if(!empty($return_games['uit'])){
+        if (!empty($return_games['uit'])) {
 
             $teams_name = $this->getFullTeamNameByComp($return_games['uit'][0]->cmp_id);
 
             //getFullTeamNameByComp
             $team = [
-                "home_team" => $return_games['uit'][0]->thuis_ploeg ,
+                "home_team" => $return_games['uit'][0]->thuis_ploeg,
                 "home_team_name" => wordwrap($teams_name[$return_games['uit'][0]->thuis_ploeg_id], 8, "<br />", false),
-                "away_team" => $return_games['uit'][0]->uit_ploeg ,
+                "away_team" => $return_games['uit'][0]->uit_ploeg,
                 "away_team_name" => wordwrap($teams_name[$return_games['uit'][0]->uit_ploeg_id], 8, "<br />", false),
                 "location" => $return_games['uit'][0]->loc_plaats,
                 "place" => $return_games['uit'][0]->loc_naam,
@@ -607,21 +644,20 @@ class Nbb{
         }
 
         return false;
-
     }
 
-    public function getNotActiveTeams($comp_id){
+    public function getNotActiveTeams($comp_id)
+    {
 
         $comp_data = $this->getStatsComp($comp_id);
         $team_ids = [];
-        foreach ($comp_data->stand as $team){
-            if($team->status != 'Actief'){
+        foreach ($comp_data->stand as $team) {
+            if ($team->status != 'Actief') {
                 $team_ids[] = $team->ID;
             }
         }
+
         return $team_ids;
-
-
     }
 
 }
