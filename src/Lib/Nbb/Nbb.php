@@ -112,6 +112,11 @@ class Nbb
         return $this->club_api_url;
     }
 
+    public function getStandingApiUrl($compId)
+    {
+        return $this->stand_api_url . "?cmp_ID=" . $compId;
+    }
+
 
 
 

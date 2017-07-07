@@ -6,6 +6,7 @@ use App\Controller\AppController;
 use App\Lib\Nbb\Club;
 use App\Lib\Nbb\Nbb;
 use App\Lib\Nbb\Teams;
+use App\Model\Entity\Team;
 
 /**
  * Clubs Controller
@@ -21,9 +22,13 @@ class ClubController extends AppController
     /** @var  Club $clubController */
     public $clubController;
 
+    /** @var Teams $teamController */
+    public $teamController;
+
     public function initialize()
     {
         $this->clubController = new Club();
+        $this->teamController = new Teams();
     }
 
 
@@ -49,17 +54,13 @@ class ClubController extends AppController
     public function index()
     {
 
-        $teamNbb = new Teams();
-
         // get all teams
-        $listOfTeams = $teamNbb->getListOfTeams();
+        $listOfTeams = $this->teamController->getListOfTeams();
+        $listOfTeams = $this->teamController->getStandingForTeams($listOfTeams);
 
-        debug($listOfTeams);
-        exit;
-
-
-        // get stats bij teams
-
+        //TODO merge dubbel teams as one row
+        //TODO cache the ranking of the teams to inmprove speed
+        $this->set(compact('clubs'));
 
     }
 
