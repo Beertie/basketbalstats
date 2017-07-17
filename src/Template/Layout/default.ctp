@@ -66,7 +66,7 @@
     <!-- Header Mobile -->
     <div class="header-mobile clearfix" id="header-mobile">
         <div class="header-mobile__logo">
-            <a href="/"><img src="/images/logo.png" alt="Rivertrotters" class="header-mobile__logo-img"></a>
+            <a href="/"><img src="/images/logo.png" alt="Basketballstats" class="header-mobile__logo-img"></a>
         </div>
         <div class="header-mobile__inner">
             <a id="header-mobile__toggle" class="burger-menu-icon"><span class="burger-menu-icon__line"></span></a>
@@ -104,19 +104,12 @@
                 </div>
                 <!-- Header Search Form / End -->
                 <ul class="info-block info-block--header">
-                    <li class="info-block__item info-block__item--contact-primary">
-                        <svg role="img" class="df-icon df-icon--jersey">
-                            <use xlink:href="/images/icons-basket.svg#jersey"/>
-                        </svg>
-                        <h6 class="info-block__heading">Join Our Team!</h6>
-                        <a class="info-block__link" href="mailto:tryouts@rivertrotters.com">tryouts@rivertrotters.com</a>
-                    </li>
                     <li class="info-block__item info-block__item--contact-secondary">
                         <svg role="img" class="df-icon df-icon--basketball">
                             <use xlink:href="/images/icons-basket.svg#basketball"/>
                         </svg>
                         <h6 class="info-block__heading">Contact Us</h6>
-                        <a class="info-block__link" href="mailto:info@rivertrotters.com">info@rivertrotters.com</a>
+                        <a class="info-block__link" href="mailto:info@basketbalstats.nl">info@basketbalstats.nl</a>
                     </li>
                 </ul>
             </div>
@@ -129,7 +122,7 @@
                 <div class="header__primary-inner">
                     <!-- Header Logo -->
                     <div class="header-logo">
-                        <a href="/"><img src="/images/logo.png" alt="Rivertrotters" class="header-logo__img"></a>
+                        <a href="/"><img src="/images/logo.png" alt="basketbalstats" class="header-logo__img"></a>
                     </div>
                     <!-- Header Logo / End -->
 
@@ -138,19 +131,18 @@
                         <ul class="main-nav__list">
                             <li class="active"><a href="/">Home</a>
                                 <ul class="main-nav__sub">
-                                    <li class=""><a href="/rivertrotters/games">Games</a></li>
-                                    <li class=""><a href="/rivertrotters/tasks">Taken</a></li>
-                                    <li class=""><a href="/rivertrotters/results">Uitslagen</a></li>
-                                    <li class=""><a href="/rivertrotters/teams">Teams</a></li>
-                                    <li class=""><a href="/rivertrotters/HistoryTeams">History teams</a></li>
-                                    <li class=""><a href="/">Agenda</a></li>
-                                    <li class=""><a href="/">Coaches en Trainers</a></li>
-                                    <li class=""><a href="/">Contact</a></li>
+                                    <li class=""><a href="#">Games</a></li>
+                                    <li class=""><a href="#">Uitslagen</a></li>
+                                    <li class=""><a href="#">Teams</a></li>
+                                    <li class=""><a href="#">History teams</a></li>
+                                    <li class=""><a href="#">Agenda</a></li>
+                                    <li class=""><a href="#">Coaches en Trainers</a></li>
+                                    <li class=""><a href="#">Contact</a></li>
                                 </ul>
                             </li>
 
 
-                            <li class=""><a href="#">Info</a>
+                        <!--    <li class=""><a href="#">Info</a>
                                 <div class="main-nav__megamenu clearfix">
                                     <ul class="col-lg-2 col-md-3 col-xs-12 main-nav__ul">
                                         <li class="main-nav__title">Informatie</li>
@@ -251,7 +243,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                            </li>
+                            </li>-->
 
 
                             <li class=""><a href="/rivertrotters/teams">De Teams</a>
@@ -295,10 +287,10 @@
                         <!-- Social Links -->
                         <ul class="social-links social-links--inline social-links--main-nav">
                             <li class="social-links__item">
-                                <a href="https://www.facebook.com/rivertrotters.basketbal/?fref=ts" class="social-links__link" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="https://www.facebook.com/basketbalstats.basketbal/?fref=ts" class="social-links__link" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
                             </li>
                             <li class="social-links__item">
-                                <a href="https://twitter.com/rivertrotters" class="social-links__link" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="https://twitter.com/basketbalstats" class="social-links__link" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
                             </li>
                         </ul>
                         <!-- Social Links / End -->
@@ -348,7 +340,7 @@
 
                                 <!-- Footer Logo -->
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="/images/logo.png" alt="Rivertrotters" class="footer-logo__img"></a>
+                                    <a href="index.html"><img src="/images/logo.png" alt="basketbalstats" class="footer-logo__img"></a>
                                 </div>
                                 <!-- Footer Logo / End -->
 
@@ -369,14 +361,7 @@
                                                     <use xlink:href="/images/icons-basket.svg#basketball"/>
                                                 </svg>
                                                 <h6 class="info-block__heading">Contact Us</h6>
-                                                <a class="info-block__link" href="mailto:info@rivertrotters.com">info@rivertrotters.com</a>
-                                            </div>
-                                            <div class="info-block__item">
-                                                <svg role="img" class="df-icon df-icon--jersey">
-                                                    <use xlink:href="/images/icons-basket.svg#jersey"/>
-                                                </svg>
-                                                <h6 class="info-block__heading">Join Our Team!</h6>
-                                                <a class="info-block__link" href="mailto:tryouts@rivertrotters.com">tryouts@rivertrotters.com</a>
+                                                <a class="info-block__link" href="mailto:info@basketbalstats.nl">info@basketbalstats.nl</a>
                                             </div>
                                             <div class="info-block__item info-block__item--nopadding">
                                                 <ul class="social-links">

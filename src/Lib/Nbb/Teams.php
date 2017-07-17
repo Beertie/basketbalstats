@@ -74,8 +74,8 @@ class Teams extends Nbb
      *
      * @return array listOfTeams
      */
-    public function getCompInfoByTeams($listOfTeams){
-
+    public function getCompInfoByTeams($listOfTeams)
+    {
 
         return $listOfTeams;
     }
