@@ -58,9 +58,14 @@ class ClubController extends AppController
         $listOfTeams = $this->teamController->getListOfTeams();
         $listOfTeams = $this->teamController->getStandingForTeams($listOfTeams);
 
+        $listOfTeams = $this->teamController->
+
         //TODO merge dubbel teams as one row
+
+        //TODO add more stats to teams pnt per game and
+
         //TODO cache the ranking of the teams to inmprove speed
-        $this->set(compact('clubs'));
+        $this->set(compact('listOfTeams'));
 
     }
 

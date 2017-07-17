@@ -26,18 +26,17 @@ class Teams extends Nbb
      */
     public function getStandingForTeams($listOfTeams)
     {
-
         foreach ($listOfTeams as $key => $team) {
 
             if (!isset($team->comp_id) OR !isset($team->id)) {
                 continue;
             }
             $standArray = $this->getListOfStand($team->comp_id);
+
             $listOfTeams[$key]->rank = $this->getRankOfTeamsFromStanding($standArray, $team->id);
         }
 
         return $listOfTeams;
-
     }
 
     /**
@@ -50,7 +49,6 @@ class Teams extends Nbb
         $standing = json_decode(file_get_contents($this->getStandingApiUrl($compId)));
 
         return $standing->stand;
-
     }
 
     /**
@@ -61,7 +59,6 @@ class Teams extends Nbb
      */
     public function getRankOfTeamsFromStanding($standing, $teamId)
     {
-
         foreach ($standing as $team) {
 
             if ($team->ID == $teamId) {
@@ -70,6 +67,16 @@ class Teams extends Nbb
         }
 
         return 0;
+    }
 
+    /**
+     * @param array $listOfTeams
+     *
+     * @return array listOfTeams
+     */
+    public function getCompInfoByTeams($listOfTeams){
+
+
+        return $listOfTeams;
     }
 }
