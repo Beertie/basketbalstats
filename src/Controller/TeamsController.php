@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -36,15 +37,18 @@ class TeamsController extends AppController
     }
 
 
-    public function index($teamId){
+    public function index($teamId)
+    {
 
         //$team = $this->teamController->getTeamInfo($id);
 
-        $schedule =$this->teamController->getScheduleByTeamId($teamId);
+        $schedule = $this->teamController->getScheduleByTeamId($teamId);
 
         $competitionId = $this->teamController->getCompetitionIdByTeamId($teamId);
 
         $stand = $this->competitionController->getScoreByCompetitionId($competitionId);
+
+        $teamName = $this->getTeamNameFormStand($teamId, $stand);
 
         //$competition = $nbb->getCompetition($comp_id);
 
@@ -74,78 +78,89 @@ class TeamsController extends AppController
 
         }*/
 
-        $this->set(compact('teamId', 'competition', 'stand', 'score_home', 'schedule', 'results'));
+        $this->set(compact('teamId', 'competition', 'stand', 'score_home', 'schedule', 'results', 'teamName'));
         $this->set('_serialize', ['team']);
 
     }
 
-    public function roster($id){
+    /**
+     * @param int $teamId
+     * @param $stand
+     *
+     * @return string
+     */
+    public function getTeamNameFormStand($teamId, $stand)
+    {
+        foreach ($stand->stand as $team) {
+            if ($team->ID == $teamId) {
+                return $team->team;
+            }
+        }
 
-        $team = $this->Teams->get($id);
-
-        $this->set(compact('team'));
-        $this->set('_serialize', ['team']);
-
+        return '';
     }
 
-    public function standing($id){
+    /**
+     * @param int $teamId
+     */
+    public function standing($teamId)
+    {
 
-        $nbb = new Nbb();
+        $competitionId = $this->teamController->getCompetitionIdByTeamId($teamId);
 
-        $team = $this->Teams->get($id);
+        $stats = $this->competitionController->getStatsByCompetitionId($competitionId);
 
-        $comp_id = $team->comp_id_1;
+        $stand = $this->competitionController->getScoreByCompetitionId($competitionId);
 
-        $stand = $nbb->getScore($comp_id);
-
-        $stats = $nbb->getStats($comp_id);
+        $teamName = $this->getTeamNameFormStand($teamId, $stand);
 
         $standings = [];
 
-        $GB_team_A_W =  '';
+        $GB_team_A_W = '';
         $GB_team_A_L = '';
 
-        foreach ($stand->stand as $key => $value){
+        foreach ($stand->stand as $key => $value) {
 
 
-            if($value->status != "Actief"){
+            if ($value->status != "Actief") {
                 continue;
             }
             //debug($value);exit;
 
-            $W= $value->punten / 2;
-            $L = (($value->gespeeld * 2 ) - $value->punten) /2;
+            $W = $value->punten / 2;
+            $L = (($value->gespeeld * 2) - $value->punten) / 2;
 
 
-            if($value->positie == 1){
+            if ($value->positie == 1) {
                 $GB = 0;
                 $GB_team_A_W = $W;
                 $GB_team_A_L = $L;
-            }else{
-                $GB = ($GB_team_A_W - $W) + ($L - $GB_team_A_L ) / 2;
+            } else {
+                $GB = ($GB_team_A_W - $W) + ($L - $GB_team_A_L) / 2;
             }
 
             $standings[] = [
                 "Pos" => $value->positie,
                 "Name" => $value->team,
                 "W" => $value->punten / 2,
-                "L" => (($value->gespeeld * 2 ) - $value->punten) /2,
-                "PCT"=> number_format($value->punten / 2 / $value->gespeeld, 3),
+                "L" => (($value->gespeeld * 2) - $value->punten) / 2,
+                "PCT" => number_format($value->punten / 2 / $value->gespeeld, 3),
                 "GB" => $GB,
                 "PPG" => $value->eigenscore / $value->gespeeld,
                 "OP PPG" => $value->tegenscore / $value->gespeeld,
-                "home" =>  $stats[$value->ID]['home'],
-                "road" =>  $stats[$value->ID]['away'],
-                "streak" =>  $stats[$value->ID]['streak'],
-                "L5" =>  $stats[$value->ID]['L5'],
+                "home" => $stats[$value->ID]['home'],
+                "road" => $stats[$value->ID]['away'],
+                "streak" => $stats[$value->ID]['streak'],
+                "L5" => $stats[$value->ID]['L5'],
             ];
         }
 
 
-        $this->set(compact('standings', 'team'));
+        $this->set(compact('standings', 'teamName', 'teamId'));
     }
 
-    public function results($id){
+    public function results($id)
+    {
         $team = $this->Teams->get($id);
 
         $nbb = new Nbb();
@@ -157,13 +172,14 @@ class TeamsController extends AppController
     }
 
 
-    public function schedule($id){
+    public function schedule($id)
+    {
 
         $team = $this->Teams->get($id);
 
         //TODO make fix
         $comp_id = $team->comp_id_1;
-        if($team->comp_id_2 != null){
+        if ($team->comp_id_2 != null) {
             $comp_id = $team->comp_id_2;
         }
 
@@ -176,7 +192,8 @@ class TeamsController extends AppController
 
     }
 
-    public function gallery($id){
+    public function gallery($id)
+    {
 
         $team = $this->Teams->get($id);
 

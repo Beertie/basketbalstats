@@ -28,11 +28,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-                <h1 class="page-heading__title"><span class="highlight"><?=$team->name?></span></h1>
+                <h1 class="page-heading__title"><span class="highlight"><?=$teamName?></span></h1>
                 <ol class="page-heading__breadcrumb breadcrumb">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="team-overview.html">The Teams</a></li>
-                    <li class="active"><?=$team->name?></li>
+                    <li class="active"><?=$teamName?></li>
                 </ol>
             </div>
         </div>
@@ -45,7 +45,6 @@
         <a href="#" class="content-filter__toggle"></a>
         <ul class="content-filter__list">
             <li class="content-filter__item content-filter__item--active"><a href="#" class="content-filter__link"><small>Team</small>Overview</a></li>
-            <li class="content-filter__item "><a href="/teams/roster/<?= $teamId?>" class="content-filter__link"><small>Team</small>Spelers</a></li>
             <li class="content-filter__item "><a href="/teams/standing/<?= $teamId?>" class="content-filter__link"><small>Team</small>Stand</a></li>
             <li class="content-filter__item "><a href="/teams/results/<?= $teamId?>" class="content-filter__link"><small>Team</small>Uitslagen</a></li>
             <li class="content-filter__item "><a href="/teams/schedule/<?= $teamId?>" class="content-filter__link"><small>Team</small>Schema</a></li>
@@ -66,47 +65,11 @@
             <!-- Content -->
             <div class="content col-md-8">
 
-                <!-- Team Roster: Table -->
-                <div class="card card--has-table">
-                    <div class="card__header card__header--has-btn">
-                        <h4>Main Roster</h4>
-                        <a href="team-roster-2.html" class="btn btn-default btn-outline btn-xs card-header__button">See Complete Roster</a>
-                    </div>
-                    <div class="card__content">
-                        <div class="table-responsive">
-                            <table class="table table--lg team-roster-table">
-                                <thead>
-                                <tr>
-                                    <th class="team-roster-table__number">NBR</th>
-                                    <th class="team-roster-table__name">Player Name</th>
-                                    <th class="team-roster-table__position hidden-xs hidden-sm">Position</th>
-                                    <th class="team-roster-table__age">Age</th>
-                                    <th class="team-roster-table__height">Height</th>
-                                    <th class="team-roster-table__weight">Weight</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="team-roster-table__number">38</td>
-                                    <td class="team-roster-table__name">Games Girobili</td>
-                                    <td class="team-roster-table__position hidden-xs hidden-sm">1st Shooting Guard</td>
-                                    <td class="team-roster-table__age">18</td>
-                                    <td class="team-roster-table__height">6'66"</td>
-                                    <td class="team-roster-table__weight">205 lbs</td>
-                                    <td class="team-roster-table__college hidden-xs hidden-sm">South Beach College</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <!-- Team Roster: Table / End -->
-
                 <!-- Schedule & Tickets -->
                 <div class="card card--has-table">
                     <div class="card__header card__header--has-btn">
                         <h4>Games Schedule</h4>
-                        <a href="/teams/schedule/<?= $team->id?>" class="btn btn-default btn-outline btn-xs card-header__button">See Complete Schedule</a>
+                        <a href="/teams/schedule/<?= $teamId?>" class="btn btn-default btn-outline btn-xs card-header__button">See Complete Schedule</a>
                     </div>
                     <div class="card__content">
                         <div class="table-responsive">
@@ -125,21 +88,7 @@
                                 <?php foreach ($schedule as $key => $game){?>
 
                                     <?php
-                                    if($key == 3){
-                                        break;
-                                    }
-                                    //debug($game);
-                                    //exit;
 
-
-
-                                    $home = "Thuis";
-                                    $vs = $game->uit_ploeg;
-                                    if($team->nbb_id != $game->thuis_ploeg_id){
-                                    $home = "Uit";
-                                    $vs = $game->thuis_ploeg;
-
-                                    }
                                     ?>
 
 

@@ -86,4 +86,6 @@ class ClubController extends AppController
         $this->set('_serialize', ['stats']);
 
     }
+
+
 }
