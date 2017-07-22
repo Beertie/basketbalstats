@@ -86,21 +86,40 @@ class Nbb
     //Set global api url
     public $url = "http://db.basketball.nl/db/json/wedstrijd.pl";
 
-
+    /**
+     * @return string api url
+     */
     public function getTeamApiUrl()
     {
         return $this->team_api_url . "?clb_ID=" . $this->club_id;
     }
 
+    /**
+     * @return string
+     */
     public function getClubApiUrl()
     {
         return $this->club_api_url;
     }
 
+    /**
+     * @param int $compId
+     *
+     * @return string
+     */
     public function getStandingApiUrl($compId)
     {
         return $this->stand_api_url . "?cmp_ID=" . $compId;
     }
+
+    /**
+     * @return string
+     */
+    public function getGameApiUl()
+    {
+        return $this->games_api_url;
+    }
+
 
 
 
@@ -310,20 +329,7 @@ class Nbb
         return $games;
     }
 
-    public function getResultsByTeam($team_id)
-    {
-        //plg_ID
-        ////http://db.basketball.nl/db/wedstrijd/uitslag.pl?&szn_Naam=2016-2017&cmp_ID=1045&plg_ID=767&org_ID=2&LVactie=Wedstrijdgegevens+tonen&Sorteer=wed_Datum
-        $url = "http://db.basketball.nl/db/json/wedstrijd.pl?plg_ID=$team_id";
-        $score = file_get_contents($url);
-        $score = json_decode($score);
 
-        //debug($score);
-
-        return $score;
-
-
-    }
 
     public function getStats($comp_id, $year = false)
     {
@@ -506,28 +512,6 @@ class Nbb
 
     }
 
-    public function getSchedule($comp_id, $team_id)
-    {
-
-        $comp = file_get_contents("http://db.basketball.nl/db/json/wedstrijd.pl?cmp_ID=$comp_id");
-        $comp = json_decode($comp);
-
-        $schedule = [];
-        foreach ($comp->wedstrijden as $key => $game) {
-
-            if ($game->thuis_ploeg_id == $team_id OR $game->uit_ploeg_id == $team_id) {
-
-                if ($game->score_thuis == 0 AND $game->score_uit == 0) {
-                    $schedule[] = $game;
-                }
-
-            }
-
-        }
-
-        return $schedule;
-
-    }
 
     public function getStatsComp($comp_id)
     {

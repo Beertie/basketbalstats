@@ -2,7 +2,10 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Lib\Nbb\Club;
+use App\Lib\Nbb\Competition;
 use App\Lib\Nbb\Nbb;
+use App\Lib\Nbb\Teams;
 use Ghunti\HighchartsPHP\Highchart;
 
 /**
@@ -13,28 +16,42 @@ use Ghunti\HighchartsPHP\Highchart;
 class TeamsController extends AppController
 {
 
-    public function index($id){
+    //TODO set to global var for club id
+    public $clubId = 81;
 
-        $team = $this->Teams->get($id);
+    /** @var  Club $clubController */
+    public $clubController;
 
-        //Select comp
-        $comp_id = $team->comp_id_1;
-        if($team->comp_id_2 != null){
-            $comp_id = $team->comp_id_2;
-        }
+    /** @var Teams $teamController */
+    public $teamController;
 
-        //Get the NBB lib
-        $nbb = new Nbb();
+    /** @var Competition $competitionController */
+    public $competitionController;
 
-        $schedule = $nbb->getSchedule($comp_id, $team->nbb_id);
+    public function initialize()
+    {
+        $this->clubController = new Club();
+        $this->teamController = new Teams();
+        $this->competitionController = new Competition();
+    }
 
-        $stand = $nbb->getScore($comp_id);
 
-        $competition = $nbb->getCompetition($comp_id);
+    public function index($teamId){
 
-        $results = $nbb->getResultsByTeam($team->nbb_id);
+        //$team = $this->teamController->getTeamInfo($id);
+
+        $schedule =$this->teamController->getScheduleByTeamId($teamId);
+
+        $competitionId = $this->teamController->getCompetitionIdByTeamId($teamId);
+
+        $stand = $this->competitionController->getScoreByCompetitionId($competitionId);
+
+        //$competition = $nbb->getCompetition($comp_id);
+
+        $results = $this->teamController->getResultsByTeam($teamId);
 
         $score_home = [];
+        /*
         $i= 1;
         foreach ($competition->wedstrijden as $key => $value){
 
@@ -55,9 +72,9 @@ class TeamsController extends AppController
                 }
             }
 
-        }
+        }*/
 
-        $this->set(compact('team', 'competition', 'stand', 'score_home', 'schedule', 'results'));
+        $this->set(compact('teamId', 'competition', 'stand', 'score_home', 'schedule', 'results'));
         $this->set('_serialize', ['team']);
 
     }

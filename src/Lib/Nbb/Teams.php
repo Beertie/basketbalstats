@@ -38,6 +38,33 @@ class Teams extends Nbb
 
     }
 
+    public function getTeamInfo($teamId){
+        return ['id'];
+    }
+
+    public function getCompetitionIdByTeamId($teamId)
+    {
+        $gameApiUrl = $this->getGameApiUl() . "?plg_ID=" . $teamId;
+
+        $cacheFilename = "team_competition_id_" . $teamId;
+
+        if (($competitionId = $this->cache->read($cacheFilename)) === false) {
+
+            $competition = json_decode(file_get_contents($gameApiUrl));
+
+            foreach ($competition->wedstrijden as $key => $game) {
+
+                $competitionId = $game->cmp_id;
+                break;
+            }
+
+            $this->cache->write($cacheFilename, $competitionId);
+        }
+
+        return $competitionId;
+    }
+
+
     /**
      * @param array $listOfTeams
      *
@@ -107,8 +134,52 @@ class Teams extends Nbb
     }
 
 
+    public function getScheduleByTeamId($teamId)
+    {
 
-    public function getTeamById($id){
+        $gameApiUrl = $this->getGameApiUl() . "?plg_ID=" . $teamId;
+
+        $cacheFilename = "team_schedule_" . $teamId;
+
+        if (($schedule = $this->cache->read($cacheFilename)) === false) {
+
+            $competition = json_decode(file_get_contents($gameApiUrl));
+
+            $schedule = [];
+            foreach ($competition->wedstrijden as $key => $game) {
+
+                if ($game->thuis_ploeg_id == $teamId OR $game->uit_ploeg_id == $teamId) {
+
+                    if ($game->score_thuis == 0 AND $game->score_uit == 0) {
+                        $schedule[] = $game;
+                    }
+
+                }
+
+            }
+
+            $this->cache->write($cacheFilename, $schedule);
+        }
+
+        return $schedule;
+    }
+
+    public function getResultsByTeam($teamId)
+    {
+        $gameApiUrl = $this->getGameApiUl() . "?plg_ID=" . $teamId;
+
+        $cacheFilename = "team_results_" . $teamId;
+
+        if (($results = $this->cache->read($cacheFilename)) === false) {
+
+            $results = json_decode(file_get_contents($gameApiUrl));
+
+            $this->cache->write($cacheFilename, $results);
+        }
+
+        return $results;
+
 
     }
+
 }
