@@ -87,21 +87,6 @@ class Nbb
     public $url = "http://db.basketball.nl/db/json/wedstrijd.pl";
 
 
-    /**
-     * Nbb constructor.
-     *
-     * @param int $club_id update club id
-     */
-    function __construct($club_id = 81)
-    {
-        //Add id to global url
-        $this->url .= "?clb_ID=$club_id";
-
-        //Update global url
-        $this->club_id = $club_id;
-    }
-
-
     public function getTeamApiUrl()
     {
         return $this->team_api_url . "?clb_ID=" . $this->club_id;

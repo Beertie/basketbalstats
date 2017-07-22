@@ -9,14 +9,33 @@
 namespace App\Lib\Nbb;
 
 
+use Cake\Cache\Cache;
+
 class Teams extends Nbb
 {
 
+    public $cache;
+
+
+    public function __construct()
+    {
+        $this->cache = Cache::engine('teams');
+    }
+
     public function getListOfTeams()
     {
-        $teams = json_decode(file_get_contents($this->getTeamApiUrl()));
 
-        return $teams->teams;
+        if (($data = $this->cache->read($this->getTeamApiUrl())) === false) {
+
+            $data = json_decode(file_get_contents($this->getTeamApiUrl()));
+
+            $data = $data->teams;
+
+            $this->cache->write($this->getTeamApiUrl(), $data);
+        }
+
+        return $data;
+
     }
 
     /**
@@ -46,9 +65,16 @@ class Teams extends Nbb
      */
     public function getListOfStand($compId)
     {
-        $standing = json_decode(file_get_contents($this->getStandingApiUrl($compId)));
+        if (($standing = $this->cache->read($this->getStandingApiUrl($compId))) === false) {
 
-        return $standing->stand;
+            $standing = json_decode(file_get_contents($this->getStandingApiUrl($compId)));
+
+            $standing = $standing->stand;
+
+            $this->cache->write($this->getStandingApiUrl($compId), $standing);
+        }
+
+        return $standing;
     }
 
     /**

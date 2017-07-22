@@ -9,7 +9,17 @@ class Club extends Nbb
 
     public function getListOfClubs()
     {
-        return json_decode(file_get_contents($this->getClubApiUrl()));
+        $cacheObj = Cache::engine('clubs');//define cache obj
+
+        if (($data = $cacheObj->read($this->getClubApiUrl())) === false) {
+
+            $data = json_decode(file_get_contents($this->getClubApiUrl()));;
+
+            $cacheObj->write($this->getClubApiUrl(), $data);
+        }
+
+        return $data;
+
 
     }
 

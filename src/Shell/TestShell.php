@@ -56,12 +56,17 @@ class TestShell extends Shell
     public function cache(){
         $id = 1;
 
+        $obj = Cache::engine('long');
 
-        if (($data = Cache::read('/test/test_'.$id)) === false) {
+
+        $file = "test123";
+
+
+        if (($data = $obj->read($file)) === false) {
 
            $data = ['test', 'test'];
 
-            Cache::write('/test/test_'.$id, $data);
+            $obj->write($file, $data);
         }
 
         return $data;
