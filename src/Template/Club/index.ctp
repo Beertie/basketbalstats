@@ -36,7 +36,7 @@
                             //debug($team);
                             ?>
                             <tr>
-                                <td class="team-standings__team"><?= $team->naam ?></td>
+                                <td class="team-standings__team"><a href="/teams/<?= $team->id ?>"> <?= $team->naam ?></a></td>
                                 <td class="team-standings__pos"><?= $team->rank ?></td>
                                 <td class="team-standings__win">45</td>
                                 <td class="team-standings__lose">5</td>

@@ -62,7 +62,6 @@ class ClubController extends AppController
 
         //TODO add more stats to teams pnt per game and
 
-        //TODO cache the ranking of the teams to inmprove speed
         $this->set(compact('listOfTeams'));
 
     }

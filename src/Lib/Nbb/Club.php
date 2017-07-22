@@ -28,8 +28,6 @@ class Club extends Nbb
 
         $url = $this->club_api_url . "?id=" . $clubId;
 
-        debug($url);
-
         $club = file_get_contents($url);
         $club = json_decode($club);
 

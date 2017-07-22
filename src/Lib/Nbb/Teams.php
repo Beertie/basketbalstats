@@ -105,4 +105,10 @@ class Teams extends Nbb
 
         return $listOfTeams;
     }
+
+
+
+    public function getTeamById($id){
+
+    }
 }
