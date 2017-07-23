@@ -52,7 +52,7 @@ class Competition extends Nbb
     public function getStatsByCompetitionId($competitionId)
     {
 
-        $gameApiUrl = $this->getGameApiUl();
+        $gameApiUrl = $this->getGameApiUl() ."?cmp_ID=".$competitionId;
 
         $cacheFileName = "score" . $competitionId;
 
@@ -252,7 +252,6 @@ class Competition extends Nbb
 
         return $team_ids;
     }
-
 
 
 }

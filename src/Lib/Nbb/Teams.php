@@ -14,23 +14,50 @@ use Cake\Cache\Cache;
 class Teams extends Nbb
 {
 
+    /**
+     * @var \Cake\Cache\CacheEngine
+     */
     public $cache;
 
-
+    /**
+     * Teams constructor.
+     */
     public function __construct()
     {
         $this->cache = Cache::engine('teams');
     }
 
+    public function getTeamNameByTeamsId($teamId)
+    {
+
+        $cacheFileName = "team_name_" . $teamId;
+        $gameApiUrl = $this->getGameApiUl() . "?plg_ID=" . $teamId;
+
+        if (($teamName = $this->cache->read($cacheFileName)) === false) {
+
+            $games = json_decode(file_get_contents($gameApiUrl));
+            foreach ($games->wedstrijden as $game) {
+                if ($game->thuis_ploeg_id == $teamId) {
+                    $teamName = $game->thuis_ploeg;
+                    break;
+                }
+            }
+            $this->cache->write($cacheFileName, $teamName);
+        }
+
+        return $teamName;
+
+    }
+
+    /**
+     * @return array
+     */
     public function getListOfTeams()
     {
 
         if (($data = $this->cache->read($this->getTeamApiUrl())) === false) {
-
             $data = json_decode(file_get_contents($this->getTeamApiUrl()));
-
             $data = $data->teams;
-
             $this->cache->write($this->getTeamApiUrl(), $data);
         }
 
@@ -38,26 +65,23 @@ class Teams extends Nbb
 
     }
 
-    public function getTeamInfo($teamId){
-        return ['id'];
-    }
-
+    /**
+     * @param int $teamId
+     *
+     * @return int competitionId
+     */
     public function getCompetitionIdByTeamId($teamId)
     {
         $gameApiUrl = $this->getGameApiUl() . "?plg_ID=" . $teamId;
-
         $cacheFilename = "team_competition_id_" . $teamId;
 
         if (($competitionId = $this->cache->read($cacheFilename)) === false) {
-
             $competition = json_decode(file_get_contents($gameApiUrl));
 
             foreach ($competition->wedstrijden as $key => $game) {
-
                 $competitionId = $game->cmp_id;
                 break;
             }
-
             $this->cache->write($cacheFilename, $competitionId);
         }
 
@@ -78,7 +102,6 @@ class Teams extends Nbb
                 continue;
             }
             $standArray = $this->getListOfStand($team->comp_id);
-
             $listOfTeams[$key]->rank = $this->getRankOfTeamsFromStanding($standArray, $team->id);
         }
 
@@ -93,11 +116,8 @@ class Teams extends Nbb
     public function getListOfStand($compId)
     {
         if (($standing = $this->cache->read($this->getStandingApiUrl($compId))) === false) {
-
             $standing = json_decode(file_get_contents($this->getStandingApiUrl($compId)));
-
             $standing = $standing->stand;
-
             $this->cache->write($this->getStandingApiUrl($compId), $standing);
         }
 
@@ -134,17 +154,19 @@ class Teams extends Nbb
     }
 
 
+    /**
+     * @param int $teamId
+     *
+     * @return array
+     */
     public function getScheduleByTeamId($teamId)
     {
 
         $gameApiUrl = $this->getGameApiUl() . "?plg_ID=" . $teamId;
-
         $cacheFilename = "team_schedule_" . $teamId;
 
         if (($schedule = $this->cache->read($cacheFilename)) === false) {
-
             $competition = json_decode(file_get_contents($gameApiUrl));
-
             $schedule = [];
             foreach ($competition->wedstrijden as $key => $game) {
 
@@ -164,16 +186,18 @@ class Teams extends Nbb
         return $schedule;
     }
 
+    /**
+     * @param int $teamId
+     *
+     * @return object
+     */
     public function getResultsByTeam($teamId)
     {
         $gameApiUrl = $this->getGameApiUl() . "?plg_ID=" . $teamId;
-
         $cacheFilename = "team_results_" . $teamId;
 
         if (($results = $this->cache->read($cacheFilename)) === false) {
-
             $results = json_decode(file_get_contents($gameApiUrl));
-
             $this->cache->write($cacheFilename, $results);
         }
 

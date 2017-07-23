@@ -9,7 +9,7 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="team-overview.html">Team</a></li>
                     <li><a href="team-overview.html">Uitslagen</a></li>
-                    <li class="active"><?=$team->name?></li>
+                    <li class="active"><?=$teamName?></li>
                 </ol>
             </div>
         </div>
@@ -21,12 +21,10 @@
     <div class="container">
         <a href="#" class="content-filter__toggle"></a>
         <ul class="content-filter__list">
-            <li class="content-filter__item "><a href="/teams/index/<?= $team->id?>" class="content-filter__link"><small>Team</small>Overview</a></li>
-            <li class="content-filter__item "><a href="/teams/roster/<?= $team->id?>" class="content-filter__link"><small>Team</small>Spelers</a></li>
-            <li class="content-filter__item "><a href="/teams/standing/<?= $team->id?>" class="content-filter__link"><small>Team</small>Stand</a></li>
-            <li class="content-filter__item content-filter__item--active"><a href="/teams/results/<?= $team->id?>" class="content-filter__link"><small>Team</small>Uitslagen</a></li>
-            <li class="content-filter__item "><a href="/teams/schedule/<?= $team->id?>" class="content-filter__link"><small>Team</small>Schema</a></li>
-            <li class="content-filter__item "><a href="/teams/gallery/<?= $team->id?>" class="content-filter__link"><small>Team</small>Foto's</a></li>
+            <li class="content-filter__item "><a href="/teams/index/<?= $teamId?>" class="content-filter__link"><small>Team</small>Overview</a></li>
+             <li class="content-filter__item "><a href="/teams/standing/<?= $teamId?>" class="content-filter__link"><small>Team</small>Stand</a></li>
+            <li class="content-filter__item content-filter__item--active"><a href="/teams/results/<?= $teamId?>" class="content-filter__link"><small>Team</small>Uitslagen</a></li>
+            <li class="content-filter__item "><a href="/teams/schedule/<?= $teamId?>" class="content-filter__link"><small>Team</small>Schema</a></li>
         </ul>
     </div>
 </nav>
@@ -79,7 +77,7 @@
                             $home = "Thuis";
                             $vs = $game->uit_ploeg;
 
-                            if($team->nbb_id != $game->thuis_ploeg_id){
+                            if($teamId != $game->thuis_ploeg_id){
                                 $home = "Uit";
                                 $vs = $game->thuis_ploeg;
 

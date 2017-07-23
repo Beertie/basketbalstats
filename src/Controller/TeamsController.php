@@ -85,7 +85,7 @@ class TeamsController extends AppController
 
     /**
      * @param int $teamId
-     * @param $stand
+     * @param     $stand
      *
      * @return string
      */
@@ -107,29 +107,21 @@ class TeamsController extends AppController
     {
 
         $competitionId = $this->teamController->getCompetitionIdByTeamId($teamId);
-
         $stats = $this->competitionController->getStatsByCompetitionId($competitionId);
-
         $stand = $this->competitionController->getScoreByCompetitionId($competitionId);
-
         $teamName = $this->getTeamNameFormStand($teamId, $stand);
-
         $standings = [];
-
         $GB_team_A_W = '';
         $GB_team_A_L = '';
 
         foreach ($stand->stand as $key => $value) {
 
-
             if ($value->status != "Actief") {
                 continue;
             }
-            //debug($value);exit;
 
             $W = $value->punten / 2;
             $L = (($value->gespeeld * 2) - $value->punten) / 2;
-
 
             if ($value->positie == 1) {
                 $GB = 0;
@@ -155,18 +147,19 @@ class TeamsController extends AppController
             ];
         }
 
-
         $this->set(compact('standings', 'teamName', 'teamId'));
     }
 
-    public function results($id)
+    /**
+     * @param int $teamId
+     */
+    public function results($teamId)
     {
-        $team = $this->Teams->get($id);
 
-        $nbb = new Nbb();
-        $results = $nbb->getResultsByTeam($team->nbb_id);
+        $results = $this->teamController->getResultsByTeam($teamId);
+        $teamName = $this->teamController->getTeamNameByTeamsId($teamId);
 
-        $this->set(compact('team', 'results'));
+        $this->set(compact('teamId', 'results', 'teamName'));
         $this->set('_serialize', ['team']);
 
     }
@@ -184,7 +177,6 @@ class TeamsController extends AppController
         }
 
         $nbb = new Nbb();
-
         $schedule = $nbb->getSchedule($comp_id, $team->nbb_id);
 
         $this->set(compact('team', 'schedule'));
