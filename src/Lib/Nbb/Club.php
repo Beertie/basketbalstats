@@ -7,18 +7,35 @@ use Cake\Cache\Cache;
 class Club extends Nbb
 {
 
+    /**
+     * @var \Cake\Cache\CacheEngine
+     */
+    public $cache;
+
+    /**
+     * Teams constructor.
+     */
+    public function __construct()
+    {
+        $this->cache = Cache::engine('clubs');
+    }
+
+    /**
+     * Get a list of all clubs
+     *
+     * @return mixed
+     */
     public function getListOfClubs()
     {
-        $cacheObj = Cache::engine('clubs');//define cache obj
+        $cacheFileName = "allclubs";
 
-        if (($data = $cacheObj->read($this->getClubApiUrl())) === false) {
-
-            $data = json_decode(file_get_contents($this->getClubApiUrl()));;
-
-            $cacheObj->write($this->getClubApiUrl(), $data);
+        if (($allClubs = $this->cache->read($cacheFileName)) === false) {
+            $allClubs = json_decode(file_get_contents($this->getClubApiUrl()));
+            $allClubs = $allClubs->clubs;
+            $this->cache->write($cacheFileName, $allClubs);
         }
 
-        return $data;
+        return $allClubs;
 
 
     }
